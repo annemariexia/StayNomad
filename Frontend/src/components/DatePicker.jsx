@@ -2,28 +2,32 @@ import React, { useEffect, useState } from 'react';
 import './DatePicker.css';
 
 const DatePicker = () => {
-  const monthFormatter = new Intl.DateTimeFormat('en-us', { month: 'long' });
+  // format any date into English
+  const monthFormatter = new Intl.DateTimeFormat('en-us', { month: 'short' });
   const weekdayFormatter = new Intl.DateTimeFormat('en-us', { weekday: 'short' });
 
+  // add days to a date and return the new date
   const addDays = (date, days) => {
     const result = new Date(date);
     result.setDate(result.getDate() + days);
     return result;
   };
 
+  // add months to a date and return the new date
   const addMonths = (date, months) => {
     const result = new Date(date);
     result.setMonth(result.getMonth() + months);
     return result;
   };
 
+  // format Date obj into "MM/DD/YYYY"
   const getDateString = (date) => {
     const year = date.getFullYear();
     let month = (1 + date.getMonth()).toString();
     month = month.length > 1 ? month : '0' + month;
     let day = date.getDate().toString();
     day = day.length > 1 ? day : '0' + day;
-    return `${day}/${month}/${year}`;
+    return `${month}/${day}/${year}`;
   };
 
   const [dates, setDates] = useState([new Date(), addDays(new Date(), 31)]);
