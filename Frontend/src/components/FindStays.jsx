@@ -1,10 +1,11 @@
 import React from 'react'
 import "./FindStays.css"
+import DatePicker from './DatePicker'
 
 function FindStays() {
   return (
     <div>
-      <h1 className='stays'>Stays</h1>
+      <DatePicker />
     </div>
   )
 }
