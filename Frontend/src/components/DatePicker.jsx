@@ -109,7 +109,7 @@ const DatePicker = () => {
   return (
     <div id="date-picker-section" className="date-container">
       <div id="date-picker-container">
-        <div id="date-picker-title">
+        <div id="location-picker-title">
           <h4>Select your dates</h4>
         </div>
 
