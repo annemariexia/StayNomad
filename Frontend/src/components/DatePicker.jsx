@@ -41,6 +41,7 @@ const DatePicker = () => {
     setCurrentYear(dates[currentDateIndex].getFullYear());
   }, [dates, currentDateIndex]);
 
+
   const updatePickerMonth = (increment) => {
     const newDate = addMonths(dates[currentDateIndex], increment);
     setDates((prevDates) => {
@@ -61,6 +62,10 @@ const DatePicker = () => {
     setDates(newDates);
     setShowDatePicker(false);
   };
+
+  const handleClose = () => {
+    setShowDatePicker(false);
+  }
 
   const renderCalendar = () => {
     const firstOfMonth = new Date(currentYear, currentMonth, 1);
@@ -140,6 +145,7 @@ const DatePicker = () => {
 
         {showDatePicker && (
           <div id="date-picker-modal">
+            <button className='close-btn' onClick={handleClose}>X</button>
             <div id="date-picker-top-bar">
               <div
                 id="date-picker-previous-month"
