@@ -11,9 +11,8 @@ const LocationPicker = () => {
 
   useEffect(() => {
     // Set initial countries and city states based on the selected region
-    setRegionCountries(countries[selectedRegion]?.split('|') || []);
+    setRegionCountries(countries[selectedRegion]?.split("|") || []);
   }, [selectedRegion]);
-
 
   const handleRegionChange = (e) => {
     const region = e.target.value;
@@ -24,7 +23,7 @@ const LocationPicker = () => {
   const handleCountryChange = (e) => {
     const country = e.target.value;
     setSelectedCountry(country);
-    setCountryCityStates(cityStates[country].split('|'));
+    setCountryCityStates(cityStates[country].split("|"));
   };
 
   return (
@@ -33,41 +32,43 @@ const LocationPicker = () => {
         <div id="location-picker-title">
           <h4>Discover your next home location</h4>
           <main>
-            <form>
+            <form className="location-form">
               <select
+                className="location-selection"
                 onChange={handleRegionChange}
                 value={selectedRegion}
                 id="region"
               >
                 <option value="">SELECT REGION</option>
-                {regions.map(region => (
-                  <option key={region} value={region}>{region}</option>
+                {regions.map((region) => (
+                  <option key={region} value={region}>
+                    {region}
+                  </option>
                 ))}
               </select>
 
-              {selectedRegion && (
-                <select
-                  name="country"
-                  onChange={handleCountryChange}
-                  value={selectedCountry}
-                >
-                  <option value="">SELECT COUNTRY</option>
-                  {regionCountries.map(country => (
-                    <option key={country} value={country}>{country}</option>
-                  ))}
-                </select>
-              )}
+              <select
+                className="location-selection"
+                name="country"
+                onChange={handleCountryChange}
+                value={selectedCountry}
+              >
+                <option value="">SELECT COUNTRY</option>
+                {regionCountries.map((country) => (
+                  <option key={country} value={country}>
+                    {country}
+                  </option>
+                ))}
+              </select>
 
-              {selectedCountry && (
-                <select
-                  name="city_state"
-                >
-                  <option value="">SELECT NEAREST DIVISION</option>
-                  {countryCityStates.map(cityState => (
-                    <option key={cityState} value={cityState}>{cityState}</option>
-                  ))}
-                </select>
-              )}
+              <select name="city_state" className="location-selection">
+                <option value="">SELECT NEAREST DIVISION</option>
+                {countryCityStates.map((cityState) => (
+                  <option key={cityState} value={cityState}>
+                    {cityState}
+                  </option>
+                ))}
+              </select>
             </form>
           </main>
         </div>

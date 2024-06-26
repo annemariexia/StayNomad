@@ -59,16 +59,17 @@ body {
 }
 
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4vw;
-    background-color: white;
-    width: 100vw;
-    height: 12vh;
-    top: 0;
-    left: 0;
-    position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4vw;
+  background-color: white;
+  width: 100vw;
+  height: 12vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 2;
 }
 
 

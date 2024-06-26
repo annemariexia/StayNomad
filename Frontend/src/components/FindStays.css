@@ -1,0 +1,18 @@
+.main-content {
+  position: relative;
+  top: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 150vh;
+}
+
+.search-btn {
+  width: 10%;
+  position: relative;
+  left: 45%;
+  top: 2%;
+  border: 2px solid #ff006f;
+  background-color: #ff006f;
+  color: white;
+}
