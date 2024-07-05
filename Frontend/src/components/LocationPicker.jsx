@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./LocationPicker.css";
 import { regions, countries, cityStates } from "../LocationData.js";
 
-const LocationPicker = () => {
+const LocationPicker = ( {updateFunction} ) => {
   const [selectedRegion, setSelectedRegion] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
+  const [selectedCity, setSelectedCity] = useState("");
+  const [data, setData] = updateFunction;
+
+  console.log(selectedCountry);
 
   const [regionCountries, setRegionCountries] = useState([]);
   const [countryCityStates, setCountryCityStates] = useState([]);
@@ -24,6 +28,13 @@ const LocationPicker = () => {
     const country = e.target.value;
     setSelectedCountry(country);
     setCountryCityStates(cityStates[country].split("|"));
+  };
+
+
+  const handleCityChange = (e) => {
+    const city = e.target.value;
+    setSelectedCity(city);
+    setData({...data, location: city})
   };
 
   return (
@@ -61,7 +72,7 @@ const LocationPicker = () => {
                 ))}
               </select>
 
-              <select name="city_state" className="location-selection">
+              <select className="location-selection" name="city" value={selectedCity} onChange={handleCityChange}>
                 <option value="">SELECT NEAREST DIVISION</option>
                 {countryCityStates.map((cityState) => (
                   <option key={cityState} value={cityState}>

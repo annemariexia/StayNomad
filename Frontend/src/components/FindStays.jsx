@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import "./FindStays.css";
 import DatePicker from "./DatePicker";
 import LocationPicker from "./LocationPicker";
 
-function FindStays() {
+const FindStays = () => {
+
+  const [data, setData] = useState({
+    dates: [new Date(), new Date()],
+    location: ""
+  }) 
+
+  function handleSubmit() {
+    console.log(data);
+  }
+
   return (
     <div className="main-content">
-      <DatePicker />
-      <LocationPicker />
-      <button className="search-btn">Search</button>
+      <DatePicker updateFunction={[data, setData]} />
+      <LocationPicker updateFunction={[data, setData]}/>
+      <button className="search-btn" onClick={handleSubmit}>Search</button>
     </div>
   );
 }

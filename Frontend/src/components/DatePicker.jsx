@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './DatePicker.css';
 
-const DatePicker = () => {
+const DatePicker = ( {updateFunction} ) => {
   // format any date into English
   const monthFormatter = new Intl.DateTimeFormat('en-us', { month: 'short' });
   const weekdayFormatter = new Intl.DateTimeFormat('en-us', { weekday: 'short' });
+  const [data, setData] = updateFunction;
 
   // add days to a date and return the new date
   const addDays = (date, days) => {
@@ -49,6 +50,7 @@ const DatePicker = () => {
       newDates[currentDateIndex] = newDate;
       return newDates;
     });
+    setData({...data, dates: dates});
   };
 
   const handleDateClick = (index) => {
@@ -60,6 +62,7 @@ const DatePicker = () => {
     const newDates = [...dates];
     newDates[currentDateIndex] = new Date(currentYear, currentMonth, day);
     setDates(newDates);
+    setData({...data, dates: dates});
     setShowDatePicker(false);
   };
 
